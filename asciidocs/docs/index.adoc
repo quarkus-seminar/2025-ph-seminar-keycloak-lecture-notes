@@ -10,8 +10,16 @@ ifndef::imagesdir[:imagesdir: images]
 :toc:
 ifdef::backend-html5[]
 // https://fontawesome.com/v4.7.0/icons/
-icon:file-text-o[link=https://github.com/2526-4ahitm-itp/2526-4ahitm-itp-lecture-notes/main/asciidocs/{docname}.adoc] ‏ ‏ ‎
-icon:github-square[link=https://github.com/2526-4ahitm-itp/2526-4ahitm-itp-lecture-notes] ‏ ‏ ‎
+icon:file-text-o[link=https://github.com/quarkus-seminar/2025-ph-seminar-keycloak-lecture-notes/main/asciidocs/{docname}.adoc] ‏ ‏ ‎
+icon:github-square[link=https://github.com/quarkus-seminar/2025-ph-seminar-keycloak-lecture-notes] ‏ ‏ ‎
 icon:home[link=http://edufs.edu.htl-leonding.ac.at/~t.stuetz/hugo/2021/01/lecture-notes/]
 endif::backend-html5[]
+
+== Seminar 2024 gh-actions
+
+* https://quarkus-seminar.github.io/2024-lab-minikube/
+* https://quarkus-seminar.github.io/2024-lab-minikube-pvc/
+
+
+== 2025-09-30
 
