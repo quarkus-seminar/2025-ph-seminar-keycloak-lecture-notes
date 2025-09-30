@@ -23,3 +23,35 @@ endif::backend-html5[]
 
 == 2025-09-30
 
+----
+git clone https://github.com/quarkus-seminar/2025-cloud-hello-world.git
+----
+
+* Einfaches maven Projekt erstellen
+
+https://github.com/quarkus-seminar/2025-cloud-hello-world
+
+----
+mvn package
+----
+
+
+=== gh-actions
+
+* jobe: werden parallel ausgeführt
+* steps: werden nacheinander ausgeführt
+* uses: Aktionen wiederverwenden
+* run: Shell Befehle ausführen
+* on: wann soll der Workflow ausgeführt werden (push, pull-request, schedule, ...)
+* name: Name des Jobs oder Steps
+* env: Umgebungsvariablen setzen
+* with: Parameter für Aktionen übergeben
+* secrets: geheime Umgebungsvariablen (z.B. Passwörter, Tokens)
+
+
+
+
+
+
+
+
