@@ -28,6 +28,8 @@ image::wireless-hdmi.png[]
 * https://www.amazon.de/dp/B0CNWVVQB5
 
 
+image::big-picture.png[]
+
 ----
 git clone https://github.com/quarkus-seminar/2025-cloud-hello-world.git
 ----
@@ -43,7 +45,7 @@ mvn package
 
 === gh-actions
 
-* jobe: werden parallel ausgeführt
+* jobs: werden parallel ausgeführt
 * steps: werden nacheinander ausgeführt
 * uses: Aktionen wiederverwenden
 * run: Shell Befehle ausführen
