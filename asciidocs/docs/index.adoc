@@ -20,6 +20,8 @@ endif::backend-html5[]
 * https://quarkus-seminar.github.io/2024-lab-minikube/
 * https://quarkus-seminar.github.io/2024-lab-minikube-pvc/
 
+* Gitlab Repo von Sebastian
+** https:// gitlab.htlwrn.ac.at/sis/nvs-4jg-template
 
 == 2025-09-30
 
