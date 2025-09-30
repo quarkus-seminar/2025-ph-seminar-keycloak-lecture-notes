@@ -23,6 +23,11 @@ endif::backend-html5[]
 
 == 2025-09-30
 
+image::wireless-hdmi.png[]
+
+* https://www.amazon.de/dp/B0CNWVVQB5
+
+
 ----
 git clone https://github.com/quarkus-seminar/2025-cloud-hello-world.git
 ----
