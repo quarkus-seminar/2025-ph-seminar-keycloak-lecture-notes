@@ -612,6 +612,48 @@ docker push ghcr.io/quarkus-seminar/hello:latest</p>
 <pre>docker buildx build --platform linux/amd64,linux/arm64 --file ./src/main/docker/Dockerfile .</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Auf welchem k8s-Cluster sind wir?</div>
+<div class="content">
+<pre> kubectl get nodes</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">result</div>
+<div class="content">
+<pre>NAME       STATUS   ROLES           AGE   VERSION
+minikube   Ready    control-plane   48m   v1.33.1</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>kubectl get namespaces
+kubectl get pods
+kubectl get deployments
+kubectl apply -f postzgres.yaml
+watch kubectl get pods</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://kubernetes.io/docs/reference/kubectl/quick-reference/" class="bare">https://kubernetes.io/docs/reference/kubectl/quick-reference/</a></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>kubectl port-forward services/postgres 5432:5432
+kubectl port-forward services/appsrv 8080:8080</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre> kubectl describe pods appsrv-75887cb564-9qx6t</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Nach einem</div>
+<div class="content">
+<pre>kubectl rollout restart deployment appsrv</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -619,7 +661,7 @@ docker push ghcr.io/quarkus-seminar/hello:latest</p>
 <div id="footer">
 <div id="footer-text">
 Version 1.0.0<br>
-Last updated 2025-10-01 09:20:30 UTC
+Last updated 2025-10-01 12:58:51 UTC
 </div>
 </div>
 </body>
