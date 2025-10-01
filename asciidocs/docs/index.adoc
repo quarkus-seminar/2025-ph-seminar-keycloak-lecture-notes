@@ -97,6 +97,42 @@ docker compose cp postgres:/docker-entrypoint-initdb.d/ .
 docker buildx build --platform linux/amd64,linux/arm64 --file ./src/main/docker/Dockerfile .
 ----
 
+.Auf welchem k8s-Cluster sind wir?
+----
+ kubectl get nodes
+----
+
+.result
+----
+NAME       STATUS   ROLES           AGE   VERSION
+minikube   Ready    control-plane   48m   v1.33.1
+----
+
+----
+kubectl get namespaces
+kubectl get pods
+kubectl get deployments
+kubectl apply -f postzgres.yaml
+watch kubectl get pods
+----
+
+https://kubernetes.io/docs/reference/kubectl/quick-reference/
+
+----
+kubectl port-forward services/postgres 5432:5432
+kubectl port-forward services/appsrv 8080:8080
+----
+
+----
+ kubectl describe pods appsrv-75887cb564-9qx6t
+----
+
+.Nach einem
+----
+kubectl rollout restart deployment appsrv
+----
+
+
 
 
 
