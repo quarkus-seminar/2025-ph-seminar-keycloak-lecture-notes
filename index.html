@@ -451,7 +451,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Thomas Stütz</span><br>
 <span id="revnumber">version 1.0.0,</span>
-<span id="revdate">2025-09-30</span>
+<span id="revdate">2025-10-01</span>
 <br><span id="revremark">Lecture Notes for Courses at HTL Leonding</span>
 </div>
 <div id="toc" class="toc2">
@@ -574,6 +574,44 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>docker build --file ./src/main/docker/Dockerfile .</p>
+</div>
+<div class="paragraph">
+<p>docker build --file ./src/main/docker/Dockerfile --tag ghcr.io/quarkus-seminar/hello:latest .
+docker push ghcr.io/quarkus-seminar/hello:latest</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>services:
+  backend:
+    image: ghcr.io/quarkus-seminar/hello
+    command: ["sleep", "900"]
+    ports:
+      - 8080:8080</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>docker compose up</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Im neuen Terminal</div>
+<div class="content">
+<pre>docker compose exec -it backend bash</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>docker compose cp postgres:/docker-entrypoint-initdb.d/ .</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>docker buildx build --platform linux/amd64,linux/arm64 --file ./src/main/docker/Dockerfile .</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -581,7 +619,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="footer">
 <div id="footer-text">
 Version 1.0.0<br>
-Last updated 2025-09-30 11:00:39 UTC
+Last updated 2025-10-01 09:20:30 UTC
 </div>
 </div>
 </body>
