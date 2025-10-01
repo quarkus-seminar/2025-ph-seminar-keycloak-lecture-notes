@@ -60,6 +60,49 @@ mvn package
 
 
 
+docker build --file ./src/main/docker/Dockerfile .
+
+
+
+docker build --file ./src/main/docker/Dockerfile --tag ghcr.io/quarkus-seminar/hello:latest .
+docker push ghcr.io/quarkus-seminar/hello:latest
+
+
+
+
+
+----
+services:
+  backend:
+    image: ghcr.io/quarkus-seminar/hello
+    command: ["sleep", "900"]
+    ports:
+      - 8080:8080
+----
+
+----
+docker compose up
+----
+
+.Im neuen Terminal
+----
+docker compose exec -it backend bash
+----
+
+----
+docker compose cp postgres:/docker-entrypoint-initdb.d/ .
+----
+
+----
+docker buildx build --platform linux/amd64,linux/arm64 --file ./src/main/docker/Dockerfile .
+----
+
+
+
+
+
+
+
 
 
 

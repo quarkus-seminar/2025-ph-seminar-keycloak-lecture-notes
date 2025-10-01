@@ -1,0 +1,37 @@
+{
+  "name": "webpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack serve --env baseHref=$BASE_HREF",
+    "test": "nyc ./node_modules/.bin/_mocha 'test/**/*.ts'",
+    "build": "webpack build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
+    "@testdeck/mocha": "^0.3.3",
+    "@types/chai": "^4.3",
+    "@types/navigo": "^8.1.2",
+    "chai": "^4.3",
+    "html-webpack-plugin": "^5.5",
+    "nyc": "^15.1.0",
+    "ts-loader": "^9.4.1",
+    "ts-mockito": "^2.6.1",
+    "ts-node": "^10.9.1",
+    "webpack": "^5.74.0",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "dependencies": {
+    "immer": "^10.0",
+    "lit-html": "^3.0",
+    "navigo": "^8.11.1",
+    "rxjs": "^7.5.7",
+    "typescript": "^5.3.3",
+    "unique-names-generator": "^4.7.1",
+    "webpack-cli": "^5.1.4"
+  }
+}

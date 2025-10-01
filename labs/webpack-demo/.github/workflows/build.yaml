@@ -1,0 +1,85 @@
+name: IPT/SYP Template
+run-name: Build Project 🚀
+on:
+  push:
+    branches:
+      - main
+
+env:
+  GITHUB_USER: ${{ github.repository_owner }}
+  BACKEND_IMAGE_NAME: "ghcr.io/${{ github.repository_owner }}/backend:latest"
+  FRONTEND_IMAGE_NAME: "ghcr.io/${{ github.repository_owner }}/frontend:latest"
+
+permissions:
+  packages: write
+  contents: read
+
+jobs:
+  frontend:
+    permissions: write-all
+    runs-on: ubuntu-24.04
+    steps:
+      - run: echo "triggered by a ${{ github.event_name }} on ${{ runner.os }} repo ${{ github.repository }} branch ${{ github.ref }} ."
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+          cache-dependency-path: ./frontend/www/package.json
+
+      - name: build frontend
+        run: |
+          ./build.sh
+        working-directory: frontend
+      - name: pack frontend
+        run: |
+            tar -czf frontend.tgz target
+            pwd
+            ls -l
+        working-directory: frontend
+
+      - name: Log in to registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
+       
+      - name: push docker images
+        run: |
+          echo "tagging frontend as $FRONTEND_IMAGE_NAME..."
+          docker tag frontend $FRONTEND_IMAGE_NAME
+          docker push $FRONTEND_IMAGE_NAME
+  
+  backend:
+    permissions: write-all
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: build backend
+        run: |
+          ./build.sh
+        working-directory: backend
+
+      - name: Log in to registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
+      - name: push backend docker image
+        run: |
+          echo "tagging backend $BACKEND_IMAGE_NAME"
+          docker tag backend $BACKEND_IMAGE_NAME
+          docker push $BACKEND_IMAGE_NAME
+  done:
+    runs-on: ubuntu-24.04
+    needs:
+      - backend
+      - frontend
+    steps:
+      - name: done
+        run: |
+          echo "# Demo Docker images pushed" >> $GITHUB_STEP_SUMMARY
+          echo "## Steps to do" >> $GITHUB_STEP_SUMMARY
+          echo "- do not forget to make **$BACKEND_IMAGE_NAME** and **$FRONTEND_IMAGE_NAME** public" >> $GITHUB_STEP_SUMMARY
+          echo "- refresh the deployments in your cloud" >> $GITHUB_STEP_SUMMARY
+

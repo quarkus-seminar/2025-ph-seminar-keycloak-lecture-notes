@@ -1,0 +1,15 @@
+deployment:
+  imagePullPolicy: Always
+  # change this when stable. Currently we do not take care of version numbers
+
+postgres:
+  image: postgres:15
+
+backend:
+  image: ghcr.io/caberger/backend:latest
+    
+frontend:
+  image: ghcr.io/caberger/frontend:latest
+
+ingress:
+  host:  itnnnnn.cloud.htl-leonding.ac.at
